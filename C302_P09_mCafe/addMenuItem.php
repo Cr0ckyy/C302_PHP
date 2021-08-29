@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: application/json');
 include "dbFunctions.php";
 include "checkAPIKey.php";
 
@@ -9,13 +10,15 @@ $unitPrice = $_POST['unitPrice'];
 $query = "INSERT INTO menu_item (menu_item_category_id, menu_item_description, menu_item_unit_price) VALUES ('$categoryId', '$description', '$unitPrice')";
 
 $status = mysqli_query($link, $query) or die(mysqli_error($link));
-if($status) {
+if ($status) {
     $row["status"] = $status;
     $row["message"] = "Menu item is inserted successfully";
-    echo json_encode($row);
+    echo json_encode($row, JSON_PRETTY_PRINT);
 } else {
     $row["status"] = $status;
     $row["message"] = "Menu item was not inserted.";
-    echo json_encode($row);
+    echo json_encode($row, JSON_PRETTY_PRINT);
 }
 ?>
+
+

@@ -12,7 +12,7 @@ $response = array();
 $actorsArr = array();
 
 while ($row = mysqli_fetch_assoc($result)) {
-	
+
     if (empty($response)) {
         $response = $row;
         unset($response['actors']);

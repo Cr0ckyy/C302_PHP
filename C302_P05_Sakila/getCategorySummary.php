@@ -8,7 +8,7 @@ INNER JOIN category ON film_category.category_id = category.category_id GROUP BY
 $result = mysqli_query($link, $query);
 
 $response = array();
-while ($row = mysqli_fetch_assoc($result)){     
+while ($row = mysqli_fetch_assoc($result)) {
     $response[] = $row;
 }
 

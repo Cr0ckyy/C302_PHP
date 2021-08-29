@@ -14,5 +14,5 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 mysqli_close($link);
 
-echo json_encode($allUsers , JSON_PRETTY_PRINT);
+echo json_encode($allUsers, JSON_PRETTY_PRINT);
 ?>

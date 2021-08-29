@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: application/json');
 
 include "dbFunctions.php";
 include "checkAPIKey.php";
@@ -13,16 +14,14 @@ $row["success"] = $status;
 
 mysqli_close($link);
 
-if($status)
-{
+if ($status) {
     $row["status"] = $status;
     $row["message"] = "Menu item is deleted successfully";
-    echo json_encode($row);
-}else
-{
+    echo json_encode($row, JSON_PRETTY_PRINT);
+} else {
     $row["status"] = $status;
     $row["message"] = "Delete menu item unsuccessful.";
-    echo json_encode($row);
+    echo json_encode($row, JSON_PRETTY_PRINT);
 }
 
 ?>

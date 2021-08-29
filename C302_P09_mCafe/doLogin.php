@@ -14,6 +14,6 @@ if (mysqli_num_rows($result) == 1) {
     $row["authenticated"] = false;
 }
 
-echo json_encode($row);
+echo json_encode($row );
 
 ?>

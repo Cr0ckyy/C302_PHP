@@ -1,23 +1,28 @@
 <?php
 
-include './DBConnection.php';
 header('Content-Type: application/json');
-
-$apikey = $_POST['apikey'] ?? '';
-$user_id = $_POST['user_id'] ?? 0;
-
-$return = array();
-
-if (!($apikey && $user_id)) {
-    $return = ['output' => 'Invalid Parameters for API Credentials'];
-    echo json_encode($return, JSON_PRETTY_PRINT);
+if (isset($_POST["loginId"]) && isset($_POST["apikey"])) {
+    $loginId = $_POST["loginId"];
+    $apikey = $_POST["apikey"];
+} else {
+    $row["authorized"] = false;
+    $row["reason"] = "No loginId or API key.";
+    echo json_encode($row);
     exit();
 }
 
-$query = "SELECT * FROM user WHERE id = $user_id AND apikey = '$apikey'";
-$result = mysqli_query($connection, $query) or die(mysqli_error($connection));
-if (mysqli_num_rows($result) < 1) {
-    $return = ['output' => 'Invalid API Credentials', 'query' => $query];
-    echo json_encode($return, JSON_PRETTY_PRINT);
+$query = "SELECT * FROM user WHERE id = '$loginId' AND apikey='$apikey'";
+$result = mysqli_query($link, $query) or die($link);
+
+if (mysqli_num_rows($result) != 1) {
+    $row["authorized"] = false;
+    $row["reason"] = "Invalid Id or API Key.";
+    $row["numrows"] = mysqli_num_rows($result);
+    $row["query"] = $query;
+    echo json_encode($row, JSON_PRETTY_PRINT);
+
     exit();
+} else {
+    $row["true"] = false;
 }
+?>

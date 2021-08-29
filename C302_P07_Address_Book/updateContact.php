@@ -12,15 +12,13 @@ $postalCode = $_POST["PostalCode"];
 $email = $_POST["Email"];
 
 $query = "UPDATE addressbook SET firstname='$firstName', lastname='$lastName', home='$home',"
-        . "mobile='$mobile', address='$address', country='$postalCode', email='$email' WHERE id='$id' ";
+    . "mobile='$mobile', address='$address', country='$postalCode', email='$email' WHERE id='$id' ";
 
 $status = mysqli_query($link, $query) or die(mysqli_error($link));
-if($status && mysqli_affected_rows($link)>0)
-{
+if ($status && mysqli_affected_rows($link) > 0) {
     $row["status"] = $status;
     $row["message"] = "Record is updated successfully.";
-}else
-{
+} else {
     $row["status"] = $status;
     $row["message"] = "Update unsuccessful.";
 }

@@ -1,15 +1,16 @@
 <?php
-$database_ip = "localhost";
-$database = "c302_magic";
-$username = "root";
-$password = "";
+$HOST = "localhost";
+$USERNAME = "root";
+$PASSWORD = "";
+$DB = "c302_magic";
+$link = mysqli_connect($HOST, $USERNAME, $PASSWORD, $DB);
 
-$link = mysqli_connect($database_ip, $username, $password, $database);
-session_start();
 if (!$link) {
     die("connection failed: " . mysqli_connect_error());
 }
 
 //if ($link) {
-//   echo "MYSQL connection success";
+//    echo "MYSQL connection success";
 //}
+
+?>
