@@ -8,7 +8,9 @@ $password = "";
 $link = mysqli_connect($database_ip, $username, $password, $database);
 
 if (!$link) {
-    die("MYSQL connection failed: " . mysqli_connect_error());
-} else {
-    echo 'Connected MYSQL successfully';
+    die("connection failed: " . mysqli_connect_error());
+}
+
+if ($link) {
+    echo "MYSQL connection success";
 }

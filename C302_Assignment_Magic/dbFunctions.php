@@ -10,6 +10,6 @@ if (!$link) {
     die("connection failed: " . mysqli_connect_error());
 }
 
-if ($link) {
-   echo "MYSQL connection success";
-}
+//if ($link) {
+//   echo "MYSQL connection success";
+//}
